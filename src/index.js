@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchBreeds, fetchCatByBreed } from './cat-api';
+import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
 
 const BASE_URL = 'https://api.thecatapi.com/v1/breeds';
 const API_KEY = (axios.defaults.headers.common['x-api-key'] =
