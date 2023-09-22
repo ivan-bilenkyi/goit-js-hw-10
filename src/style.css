@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0 auto;
+  padding: 15px;
+  max-width: 1128px;
+  position: relative;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+.loader {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+.breed-select {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  margin-bottom: 20px;
+}
+.cat-info {
+  display: flex;
+}
+.box {
+  width: calc(100% / 2);
+}
