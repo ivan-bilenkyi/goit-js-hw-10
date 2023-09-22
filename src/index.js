@@ -35,9 +35,9 @@ console.log(this.value);
       console.log(result);
       const url = result[0].url
       console.log(url);
-      const beerds = result[0].breeds;
-      console.log(beerds);
-      createMarkupBeerd(beerds);
+      const beerd = result[0].breeds;
+      console.log(beerd);
+      createMarkupBeerd(url, beerd);
     })
     .catch(error =>
       console.log(error)
@@ -61,16 +61,16 @@ console.log(this.value);
 //     )
 //     .finally(() => (loader.style.display = 'none'));
 // }
-function createMarkupBeerd({ url, breeds }) {
-  console.log();
+function createMarkupBeerd( url, beerd ) {
+  console.log(beerd[0]);
   const markup = `
     <div class="box">
-      <img src="${url}" alt="${breeds[0].name}" width="500"/>
+      <img src="${url}" alt="${beerd[0].name}" width="500"/>
     </div>
     <div class="box">
-      <h1>${breeds[0].name}</h1>
-      <p>${breeds[0].description}</p>
-      <p><b>Temperament:</b> ${breeds[0].temperament}</p>
+      <h1>${beerd[0].name}</h1>
+      <p>${beerd[0].description}</p>
+      <p><b>Temperament:</b> ${beerd[0].temperament}</p>
     </div>`;
   catInfo.innerHTML = markup;
 }
