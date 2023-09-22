@@ -15,18 +15,20 @@ error.style.display = 'none';
 
 fetchBreeds()
   .then(result => {
-    const optionBeerds = createOptionBeerds(result);
-    breedSelect.innerHTML = optionBeerds;
+    const optionBreeds = createOptionBreeds(result);
+    breedSelect.innerHTML = optionBreeds;
   })
   .catch(error => console.log(error))
   .finally(() => (loader.style.display = 'none'));
 
-function createOptionBeerds(selectArr) {
+function createOptionBreeds(selectArr) {
   return selectArr
     .map(({ id, name }) => `<option value="${id}">${name}</option>`)
     .join('');
 }
-breedSelect.addEventListener('change', function () {
+breedSelect.addEventListener('change', selectionBreed);
+
+function selectionBreed() {
   loader.style.display = 'block';
 console.log(this.value);
   const breedId = this.value;
@@ -35,42 +37,25 @@ console.log(this.value);
       console.log(result);
       const url = result[0].url
       console.log(url);
-      const beerd = result[0].breeds;
-      console.log(beerd);
-      createMarkupBeerd(url, beerd);
+      const breed = result[0].breeds;
+      console.log(breed);
+      createMarkupBreed(url, breed);
     })
     .catch(error =>
       console.log(error)
     )
     .finally(() => (loader.style.display = 'none'));
-});
-
-// function selectionBreed() {
-//   loader.style.display = 'block';
-// console.log(this.value);
-//   const breedId = this.value;
-//   fetchCatByBreed(breedId)
-//     .then(result => {
-//       console.log(result);
-//       const beerd = ({ url, breeds } = result[0]);
-//       console.log(url);
-//       createMarkupBeerd(beerd);
-//     })
-//     .catch(error =>
-//       console.log(error)
-//     )
-//     .finally(() => (loader.style.display = 'none'));
-// }
-function createMarkupBeerd( url, beerd ) {
-  console.log(beerd[0]);
+}
+function createMarkupBreed( url, breed ) {
+  console.log(breed);
   const markup = `
     <div class="box">
-      <img src="${url}" alt="${beerd[0].name}" width="500"/>
+      <img src="${url}" alt="${breed[0].name}" width="500"/>
     </div>
     <div class="box">
-      <h1>${beerd[0].name}</h1>
-      <p>${beerd[0].description}</p>
-      <p><b>Temperament:</b> ${beerd[0].temperament}</p>
+      <h1>${breed[0].name}</h1>
+      <p>${breed[0].description}</p>
+      <p><b>Temperament:</b> ${breed[0].temperament}</p>
     </div>`;
   catInfo.innerHTML = markup;
 }
