@@ -33,9 +33,11 @@ console.log(this.value);
   fetchCatByBreed(breedId)
     .then(result => {
       console.log(result);
-      const beerd = ({ url, breeds } = result[0]);
+      const url = result[0].url
       console.log(url);
-      createMarkupBeerd(beerd);
+      const beerds = result[0].breeds;
+      console.log(beerds);
+      createMarkupBeerd(beerds);
     })
     .catch(error =>
       console.log(error)
