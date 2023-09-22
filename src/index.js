@@ -1,9 +1,5 @@
-import axios from 'axios';
-import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
 
-const BASE_URL = 'https://api.thecatapi.com/v1/breeds';
-const API_KEY = (axios.defaults.headers.common['x-api-key'] =
-  'live_KyfL4pvBYgASckltKQrpcxKOeguyY5zf3tDNqmhMsEUi8Gxfzujo0I8OhcNs7HHE');
+import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
 
 const refs = {
   breedSelect: document.querySelector('.js-breed-select'),
@@ -17,7 +13,7 @@ const { breedSelect, catInfo, loader, error } = refs;
 loader.style.display = 'none';
 error.style.display = 'none';
 
-fetchBreeds(BASE_URL, API_KEY)
+fetchBreeds()
   .then(result => {
     const optionBeerds = createOptionBeerds(result);
     breedSelect.innerHTML = optionBeerds;

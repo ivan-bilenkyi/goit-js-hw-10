@@ -1,12 +1,9 @@
-import axios from 'axios';
-
-const SEARCH_URL = 'https://api.thecatapi.com/v1/images/search?breed_ids=';
 const BASE_URL = 'https://api.thecatapi.com/v1';
-const API_KEY = (axios.defaults.headers.common['x-api-key'] =
-  'live_KyfL4pvBYgASckltKQrpcxKOeguyY5zf3tDNqmhMsEUi8Gxfzujo0I8OhcNs7HHE');
+const API_KEY =
+  'live_KyfL4pvBYgASckltKQrpcxKOeguyY5zf3tDNqmhMsEUi8Gxfzujo0I8OhcNs7HHE';
 
-function fetchBreeds(url, api) {
-  return fetch(`${url}?x-api-key=${api}`).then(response => {
+function fetchBreeds() {
+  return fetch(`${BASE_URL}/breeds?x-api-key=${API_KEY}`).then(response => {
     if (!response.ok) {
       throw new Error(response.status);
     }
