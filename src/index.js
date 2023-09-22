@@ -38,7 +38,7 @@ function selectionBreed() {
       createMarkupBeerd(beerd);
     })
     .catch(error =>
-      alert('Oops! Something went wrong! Try reloading the page!')
+      console.log(error)
     )
     .finally(() => (loader.style.display = 'none'));
 }
