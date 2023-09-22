@@ -18,7 +18,7 @@ fetchBreeds()
     const optionBeerds = createOptionBeerds(result);
     breedSelect.innerHTML = optionBeerds;
   })
-  .catch(error => alert('Oops! Something went wrong! Try reloading the page!'))
+  .catch(error => console.log(error))
   .finally(() => (loader.style.display = 'none'));
 
 function createOptionBeerds(selectArr) {
