@@ -8,17 +8,17 @@ const refs = {
   error: document.querySelector('.error'),
 };
 
-const { breedSelect, catInfo, loader, error } = refs;
+const { breedSelect, catInfo, loader, } = refs;
 
 loader.style.display = 'none';
-error.style.display = 'none';
+refs.error.style.display = 'none';
 
 fetchBreeds()
   .then(result => {
     const optionBreeds = createOptionBreeds(result);
     breedSelect.innerHTML = optionBreeds;
   })
-  .catch(error => console.log(error))
+  .catch(error => refs.error.style.display = 'block')
   .finally(() => (loader.style.display = 'none'));
 
 function createOptionBreeds(selectArr) {
@@ -34,15 +34,13 @@ console.log(this.value);
   const breedId = this.value;
   fetchCatByBreed(breedId)
     .then(result => {
-      console.log(result);
+      
       const url = result[0].url
-      console.log(url);
       const breed = result[0].breeds;
-      console.log(breed);
       createMarkupBreed(url, breed);
     })
     .catch(error =>
-      console.log(error)
+      refs.error.style.display = 'block'
     )
     .finally(() => (loader.style.display = 'none'));
 }
