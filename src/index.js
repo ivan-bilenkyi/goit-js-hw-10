@@ -26,23 +26,41 @@ function createOptionBeerds(selectArr) {
     .map(({ id, name }) => `<option value="${id}">${name}</option>`)
     .join('');
 }
-breedSelect.addEventListener('change', selectionBreed);
-
-function selectionBreed() {
+breedSelect.addEventListener('change', function () {
   loader.style.display = 'block';
-
+console.log(this.value);
   const breedId = this.value;
   fetchCatByBreed(breedId)
     .then(result => {
+      console.log(result);
       const beerd = ({ url, breeds } = result[0]);
+      console.log(url);
       createMarkupBeerd(beerd);
     })
     .catch(error =>
       console.log(error)
     )
     .finally(() => (loader.style.display = 'none'));
-}
+});
+
+// function selectionBreed() {
+//   loader.style.display = 'block';
+// console.log(this.value);
+//   const breedId = this.value;
+//   fetchCatByBreed(breedId)
+//     .then(result => {
+//       console.log(result);
+//       const beerd = ({ url, breeds } = result[0]);
+//       console.log(url);
+//       createMarkupBeerd(beerd);
+//     })
+//     .catch(error =>
+//       console.log(error)
+//     )
+//     .finally(() => (loader.style.display = 'none'));
+// }
 function createMarkupBeerd({ url, breeds }) {
+  console.log();
   const markup = `
     <div class="box">
       <img src="${url}" alt="${breeds[0].name}" width="500"/>
