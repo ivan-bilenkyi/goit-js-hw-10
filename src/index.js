@@ -29,8 +29,9 @@ function createOptionBreeds(selectArr) {
 breedSelect.addEventListener('change', selectionBreed);
 
 function selectionBreed() {
+  catInfo.style.display = 'none'
+  refs.error.style.display = 'none';
   loader.style.display = 'block';
-console.log(this.value);
   const breedId = this.value;
   fetchCatByBreed(breedId)
     .then(result => {
@@ -38,6 +39,8 @@ console.log(this.value);
       const url = result[0].url
       const breed = result[0].breeds;
       createMarkupBreed(url, breed);
+    catInfo.style.display = 'flex';
+
     })
     .catch(error =>
       refs.error.style.display = 'block'

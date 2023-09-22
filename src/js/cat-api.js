@@ -12,7 +12,7 @@ function fetchBreeds() {
 }
 function fetchCatByBreed(breedId) {
   return fetch(
-    `${BASE_URL}/images/search?111111111111111111111111111api_key=${API_KEY}&breed_ids=${breedId}`
+    `${BASE_URL}/images/search?api_key=${API_KEY}&breed_ids=${breedId}`
   ).then(response => {
     if (!response.ok) {
       throw new Error(response.status);
